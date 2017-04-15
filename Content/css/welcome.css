@@ -1,0 +1,215 @@
+﻿html, body {
+    height: 100%;
+}
+
+.MainContent {
+    min-height: 100%;
+}
+
+.btn {
+    box-shadow: none !important;
+}
+
+body {
+    font-family: "Open Sans", Helvetica, Helvetica Nue, Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.MainMenuDropdown .dropdown-toggle {
+    height: 100px;
+    line-height: 64px;
+    font-size: 36px;
+    display: block;
+    text-align: center;
+    font-family: "Open Sans", Helvetica, Helvetica Nue, Arial, sans-serif;
+    background-image: url("/Content/img/welcome/header_green.png");
+    background-repeat: repeat-x;
+}
+
+    .MainMenuDropdown .dropdown-toggle img {
+        height: 100px;
+    }
+
+.MainMenuDropdown li a {
+    text-align: left;
+}
+
+@media (max-width:991px) {
+    .MainMenu {
+        display: block;
+    }
+
+        .MainMenu .ResponsiveMainMenu .dropdown-toggle {
+            display: block;
+            color: #ef6a20;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            font-size: 18px;
+            text-align: center;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .MainMenu .ResponsiveMainMenu li a {
+            text-align: left;
+        }
+
+        .MainMenu .ResponsiveMainMenu.open .dropdown-toggle {
+            background: #ef6a20;
+            color: #fff;
+        }
+}
+
+.HomePage {
+    position: relative;
+}
+
+    .HomePage .HomeLeftSide {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        padding: 40px 0;
+        text-align: center;
+        background-color: #1B49A0;
+    }
+
+        .HomePage .HomeLeftSide:hover {
+            cursor: pointer;
+        }
+
+        .HomePage .HomeLeftSide img {
+            margin: 0 auto 0;
+            max-width: 35%;
+            display: block;
+            padding-top: 5%;
+        }
+
+    .HomePage .HomeRightSide img {
+        margin: 0 auto 0;
+        max-width: 100%;
+        display: block;
+        padding-top: 50px;
+    }
+
+a.HomeRightSide.docusign-route-builder-header:link,
+a.HomeRightSide.docusign-route-builder-header:visited,
+a.HomeRightSide.docusign-route-builder-header:hover,
+a.HomeRightSide.docusign-route-builder-header:focus,
+a.HomeRightSide.docusign-route-builder-header:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+.docusing-pane {
+    display: block;
+    font-family: Arial;
+    color: white;
+}
+
+.docusing-right-pane {
+    display: block;
+    margin-bottom: 40px;
+    margin-left: 140px;
+    margin-right: 140px;
+    font-family: Arial;
+    color: #697882;
+    margin-top: 50px;
+}
+
+
+
+.docusign-route-builder-header {
+    color: #fff;
+    margin-top: 75px;
+}
+
+    .docusign-route-builder-header h1 {
+        font-size: 95px;
+        font-weight: bold;
+        width: 2350px;
+        height: 75px;
+        background: url(/Content/img/dockyard_logo.png) top right no-repeat;
+        margin: 0 0 0 -2000px;
+    }
+
+    .docusign-route-builder-header h2 {
+        font-size: 55px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #697882;
+    }
+
+.docusing-pane p {
+    margin-top: 10px;
+    color: rgb(178, 178, 178);
+    font-size: 20px;
+}
+
+.left-try {
+    margin-left: 71px;
+    margin-top: 15px;
+}
+
+.docusign-header {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 36px;
+}
+
+.docusign-info {
+    display: block;
+    font-family: Arial;
+    margin-top: 45px;
+    text-align: center;
+}
+
+    .docusign-info ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .docusign-info .btn {
+        margin-left: 0;
+    }
+
+.HomePage .HomeRightSide {
+    background: #EFF3F8;
+    float: right;
+    width: 50%;
+    padding: 40px 0;
+}
+
+    .HomePage .HomeRightSide:hover {
+        cursor: pointer;
+    }
+
+    .HomePage .HomeRightSide .HomeRightSideWrapper {
+        max-width: 550px;
+        margin: auto;
+        text-align: center;
+    }
+
+        .HomePage .HomeRightSide .HomeRightSideWrapper .Logo {
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .HomePage .HomeRightSide .HomeRightSideWrapper p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+.dropdown-menu {
+    background-color: #4e5966;
+    border: 0 none;
+    border-radius: 0;
+    padding: 5px 0;
+}

@@ -1,0 +1,99 @@
+﻿@using HubWeb.ViewModels
+
+<nav class="navbar navbar-fixed-top navbar-light">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <img src="/Content/img/dockyard_logo_white.png" alt="FR8" />
+                <h1 class="hide">FR8 Company</h1>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="main-nav" role="navigation">
+            @using Microsoft.AspNet.Identity
+            @if (Request.IsAuthenticated)
+            {
+                <!-- SINGUP/LOGIN UPRIGHT OR WELCOMING MESSAGE -->
+                <div class="userinfo">
+                    <p class="navbar-text">Hello
+                        @if (User.IsInRole("Guest"))
+                        {
+                            <text>Guest User!</text>
+                        }
+                        else
+                        {
+                            <text>@User.Identity.GetUserName()!</text>
+                        }
+                    </p>
+                    @if (User.IsInRole("Guest"))
+                    {
+                        <p class="navbar-text">
+                            <a href="/Account/Logoff">Have an Account? Login</a>
+                        </p>
+                    }
+                </div>
+            }
+            <!-- MENU -->
+            <ul class="nav navbar-nav navbar-right">
+                <!--How It Works-->
+                <li><a href="/#about">How it Works</a></li>
+                <!--Services-->
+                <li data-scroll="scrolling" class="dropdown">
+                    <a data-target="#" href="/#services" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Services">Services <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Services/DocuSign">DocuSign</a></li>
+                        <li><a href="/Services/Salesforce">Salesforce.com</a></li>
+                        <li><a href="@NavLinks.PlanDirectory">Plan Directory</a></li>
+                    </ul>
+                </li>
+                <!--Developers-->
+                <li data-scroll="scrolling" class="dropdown">
+                    <a href="/#aboutus" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Developers">Developers <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-scroll="scrolling"><a href="@NavLinks.Documentation">Documentation</a></li>
+                        <li data-scroll="scrolling"><a href="@NavLinks.GitHub">GitHub</a></li>
+                        <li data-scroll="scrolling"><a href="/manifest_registry">Manifest Registry</a></li>
+                    </ul>
+                </li>
+                <!--Company-->
+                <li data-scroll="scrolling" class="dropdown">
+                    <a href="/#aboutus" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" title="Company">Company <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li data-scroll="scrolling"><a href="@NavLinks.BaseUrl/Company/#vision">Vision</a></li>
+                        <li data-scroll="scrolling"><a href="@NavLinks.BaseUrl/Company/#team">Team</a></li>
+                        <li data-scroll="scrolling"><a href="@NavLinks.BaseUrl/Company/#press">Press Releases</a></li>
+                        <li data-scroll="scrolling"><a href="@NavLinks.BaseUrl/Company/#location">Location</a></li>
+                        <li data-scroll="scrolling"><a href="@NavLinks.BaseUrl/Company/#jobs">Jobs</a></li>
+                    </ul>
+                </li>
+                <!--Contact-->
+                <li><a href="/Support" title="Contact">Contact</a></li>
+                <!--Blog-->
+                <li><a href="@NavLinks.Blog" target="_blank">Blog</a></li>
+                <hr class="responsive-line"/>
+                <!--Login Button on Right-->
+                @if (!Request.IsAuthenticated)
+                {
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/Account" class="btn btn-danger">Login/Register</a>
+                        </p>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <p class="navbar-btn">
+                            <a href="/dashboard/myaccount" class="btn btn-primary">My Account</a>
+                        </p>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>

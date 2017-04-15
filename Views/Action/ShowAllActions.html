@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>All Actions</title>
+    <link href="../../bower_components/DataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+    
+<table id="tblallactions" class="data-table dataTable">
+	<thead>
+	<tr>
+		<th width="20%">Name</th>
+	</tr>
+	</thead>
+</table> 
+    
+    <button id="savebutton" class="btn btn-large pull-right" type="button" onclick="OnSaveActionClick();">Save Action</button>
+    
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../bower_components/DataTables/media/js/jquery.dataTables.min.js"></script>
+<script>
+    //TODO: This file was changed and not tested
+
+	//Document ready function, will run after page is ready and all elements are loaded.
+	$( document ).ready( function() {
+		var uri = '/api/action';
+
+		//Inserts retrieved booking request json into DataTable Widget
+		function showActions( response ) {
+			//This configuration supports several columns of data
+			$( '#tblallactions' ).dataTable( {
+				data: response,
+				columns: [
+					{ "data": "Name" }
+				]
+			} );
+		}
+	    
+		function OnSaveActionClick() {
+		    alert("Save Clicked");
+		    var saveUri = "/api/Action/Save";
+
+		    var action = {
+		        Id: 1,
+		        Name: "NameOfTheAction",
+		        UserLabel: "UserLableOfTheAction",
+		        ActionType: "ActionTypeOfTheAction",
+		        ActionListId: 1,
+		        ConfigurationSettings: "JsonConfigSettings",
+		        FieldMappingSettings: "JsonFieldMapiingsSettings",
+		        ParentPluginRegistration: "ParentPlugInReg"
+		    };
+
+
+		    $.ajax({
+		        url: saveUri,
+		        type: "Post",
+		        data: JSON.stringify(action),
+		        contentType: "application/json; charset=utf-8",
+		        success: function (data) {
+		            if (data.ID == null) {
+
+		            }
+		        },
+		        error: function () {
+		        }
+		    });
+		}
+	    
+		//Ajax call to get all unprocessed booking request from server.
+		$.get( uri, {}, showActions, 'json' );
+	} );
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Authentication succeeded</title>
+</head>
+<body>
+    <script type="text/javascript">
+        window.opener.postMessage(
+            {
+                type: 'external-auth-success',
+                terminalId: '@Model.TerminalId',
+                terminalName: '@Model.TerminalName',
+                authTokenId: '@Model.AuthorizationTokenId.ToString()'
+            },
+            '*'
+        );
+    </script>
+</body>
+</html>

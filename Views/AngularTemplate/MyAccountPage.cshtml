@@ -1,0 +1,47 @@
+﻿<ul class="page-breadcrumb breadcrumb hide">
+    <!-- BEGIN PAGE BREADCRUMB -->
+    <li>
+        <a href="#">Home</a><i class="fa fa-circle"></i>
+    </li>
+    <li class="active">
+        Dashboard
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMB -->
+<!-- BEGIN MAIN CONTENT -->
+
+<div ng-controller="PlanListController" class="margin-top-10" id="nav-tables" event-plandashboard>
+    <div class="row" style="margin:10px">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="My Plans">
+                    <md-content class="md-padding">
+                        <div id="Myfr8lines">
+                            <h3> My Plans
+                                <div class="actions pull-right" event-add>
+                                    <a ng-click="addPlan()" class="btn green route-list-header-button">Add Plan</a>
+                                </div>
+                            </h3>
+                            @Html.Partial("_PlanList")
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Settings">
+                    <md-content class="md-padding">
+                        <div id="Myfr8lines">
+                            <p>Account ID : @User.Identity.Name</p>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Organization" ng-if="doesOrganizationExists">
+                    <md-content class="md-padding">
+                        <div id="Myfr8lines">
+                            @Html.Partial("Organization")
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->

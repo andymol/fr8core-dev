@@ -1,0 +1,28 @@
+﻿<div class="portlet light">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h5 class="bold">Map from:</h5>
+        </div>
+        <div class="col-md-6 text-center ">
+            <h5 class="bold">Map to:</h5>
+        </div>
+    </div>
+    <div ng-show="dataItems.length > 0">
+        <div class="row margin-top-15" ng-repeat="dataItem in dataItems">
+            <div class="col-md-6">
+                <select ng-model="dataItem.selectedSource" class="form-control"
+                        ng-options="source.key as source.key for source in dataItem.sources"
+                        ng-change="uiDropDownChanged()" stop-click-propagation>
+                    <option value="">Select Document Field</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select ng-model="dataItem.selectedTarget" class="form-control"
+                        ng-options="target.value as target.key for target in dataItem.targets"
+                        ng-change="uiDropDownChanged()" stop-click-propagation>
+                    <option value="">Select Document Field</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

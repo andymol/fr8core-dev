@@ -1,0 +1,1555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{990241EA-6CF0-4026-B57C-A9031463C7C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data</RootNamespace>
+    <AssemblyName>Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Dev\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Demo|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Demo\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Analytics.NET, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Analytics.2.0.0\lib\Analytics.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.5.6.2.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.0.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.0.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Common.2.0.4\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.1.0.0\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.19.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.19.208020213\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.19.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.19.208020213\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=5.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.5.0.2\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PhoneNumbers, Version=7.0.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\libphonenumber-csharp.7.2.5\lib\PhoneNumbers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PusherServer, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PusherServer.2.1.1.0\lib\net35\PusherServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="YamlDotNet, Version=2.0.1.20271, Culture=neutral, PublicKeyToken=2b53052c5884d7a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.3.1.1\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zlib.Portable, Version=1.9.1.9000, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zlib.Portable.1.9.2\lib\portable-net4+sl4+wp71+win8\Zlib.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\ActivityCategoryDO.cs" />
+    <Compile Include="Entities\ActivityCategorySetDO.cs" />
+    <Compile Include="Entities\AspNetUserClaimDO.cs" />
+    <Compile Include="Entities\EncryptedAuthorizationData.cs" />
+    <Compile Include="Entities\OrganizationDO.cs" />
+    <Compile Include="Entities\PageDefinitionDO.cs" />
+    <Compile Include="Entities\PermissionSetDO.cs" />
+    <Compile Include="Entities\PlanNodeDO.cs" />
+    <Compile Include="Entities\FileDO.cs" />
+    <Compile Include="Entities\TerminalSubscriptionDO.cs" />
+    <Compile Include="Expressions\ConversionMethods.cs" />
+    <Compile Include="Expressions\ExpressionTransformation.cs" />
+    <Compile Include="Expressions\ExpressionTransformation.PropertyInfo.cs" />
+    <Compile Include="Expressions\ExpressionTransformation.TransformationVisitor.cs" />
+    <Compile Include="Infrastructure\AutoMapper\JSONToStringConverter.cs" />
+    <Compile Include="Infrastructure\AutoMapper\DataAutoMapperBootstrapper.cs" />
+    <Compile Include="Infrastructure\AutoMapper\PlanDOFullConverter.cs" />
+    <Compile Include="Entities\ActivityTemplateDO.cs" />
+    <Compile Include="Infrastructure\AutoMapper\StringToJSONConverter.cs" />
+    <Compile Include="Infrastructure\CloudFileManager.cs" />
+    <Compile Include="Infrastructure\Fr8DbConfiguration.cs" />
+    <Compile Include="Infrastructure\Security\AuthorizeActivityAttribute.cs" />
+    <Compile Include="Entities\ActivityDO.cs" />
+    <Compile Include="Entities\AuthorizationTokenDO.cs" />
+    <Compile Include="Entities\BaseDO.cs" />
+    <Compile Include="Infrastructure\StructureMapUnitOfWorkFactory.cs" />
+    <Compile Include="Interfaces\IAspNetUserClaimDO.cs" />
+    <Compile Include="Interfaces\IFileRepository.cs" />
+    <Compile Include="Interfaces\ITrackingChangesRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWorkFactory.cs" />
+    <Compile Include="Interfaces\IUtilizationDataProvider.cs" />
+    <Compile Include="Migrations\201510120408332_InitialMigration.cs" />
+    <Compile Include="Migrations\201510120408332_InitialMigration.Designer.cs">
+      <DependentUpon>201510120408332_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510130637359_UpdateDocuSignEventDo.cs" />
+    <Compile Include="Migrations\201510130637359_UpdateDocuSignEventDo.Designer.cs">
+      <DependentUpon>201510130637359_UpdateDocuSignEventDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510141403432_Change ProcessTemplate to Route.cs" />
+    <Compile Include="Migrations\201510141403432_Change ProcessTemplate to Route.Designer.cs">
+      <DependentUpon>201510141403432_Change ProcessTemplate to Route.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510141530275_Rename ProcessNodeTemplate to Subroute.cs" />
+    <Compile Include="Migrations\201510141530275_Rename ProcessNodeTemplate to Subroute.Designer.cs">
+      <DependentUpon>201510141530275_Rename ProcessNodeTemplate to Subroute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510141822442_RemoveActionState.cs" />
+    <Compile Include="Migrations\201510141822442_RemoveActionState.Designer.cs">
+      <DependentUpon>201510141822442_RemoveActionState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510150439139_Rename_Process_To_Container_Migration.cs" />
+    <Compile Include="Migrations\201510150439139_Rename_Process_To_Container_Migration.Designer.cs">
+      <DependentUpon>201510150439139_Rename_Process_To_Container_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510150528051_FixUp_Migration.cs" />
+    <Compile Include="Migrations\201510150528051_FixUp_Migration.Designer.cs">
+      <DependentUpon>201510150528051_FixUp_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510150812534_Rename_DockyardAccount_To_Fr8Account_Migration.cs" />
+    <Compile Include="Migrations\201510150812534_Rename_DockyardAccount_To_Fr8Account_Migration.Designer.cs">
+      <DependentUpon>201510150812534_Rename_DockyardAccount_To_Fr8Account_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510151001212_Rename_Activity_To_RouteNode_Migration.cs" />
+    <Compile Include="Migrations\201510151001212_Rename_Activity_To_RouteNode_Migration.Designer.cs">
+      <DependentUpon>201510151001212_Rename_Activity_To_RouteNode_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510152143047_Add_Label_Property_To_ActionTemplate.cs" />
+    <Compile Include="Migrations\201510152143047_Add_Label_Property_To_ActionTemplate.Designer.cs">
+      <DependentUpon>201510152143047_Add_Label_Property_To_ActionTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510181719065_IngnoreChangesUpdate.cs" />
+    <Compile Include="Migrations\201510181719065_IngnoreChangesUpdate.Designer.cs">
+      <DependentUpon>201510181719065_IngnoreChangesUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510181426528_RemoveFrAccountIdFromContainerDO.cs" />
+    <Compile Include="Migrations\201510181426528_RemoveFrAccountIdFromContainerDO.Designer.cs">
+      <DependentUpon>201510181426528_RemoveFrAccountIdFromContainerDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510200747079_UpdateMTTables.cs" />
+    <Compile Include="Migrations\201510200747079_UpdateMTTables.Designer.cs">
+      <DependentUpon>201510200747079_UpdateMTTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510201228599_ModifiedAuthorizeTokenTable.cs" />
+    <Compile Include="Migrations\201510201228599_ModifiedAuthorizeTokenTable.Designer.cs">
+      <DependentUpon>201510201228599_ModifiedAuthorizeTokenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510202031291_NothingIgnoreChanages.cs" />
+    <Compile Include="Migrations\201510202031291_NothingIgnoreChanages.Designer.cs">
+      <DependentUpon>201510202031291_NothingIgnoreChanages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510212105295_AddMinPaneWidth.cs" />
+    <Compile Include="Migrations\201510212105295_AddMinPaneWidth.Designer.cs">
+      <DependentUpon>201510212105295_AddMinPaneWidth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510221210362_ActivityTemplate_AuthType_Migration.cs" />
+    <Compile Include="Migrations\201510221210362_ActivityTemplate_AuthType_Migration.Designer.cs">
+      <DependentUpon>201510221210362_ActivityTemplate_AuthType_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510230242497_FixUp_2_Migration.cs" />
+    <Compile Include="Migrations\201510230242497_FixUp_2_Migration.Designer.cs">
+      <DependentUpon>201510230242497_FixUp_2_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510252034017_AddTagsToActivityTemplateDO.cs" />
+    <Compile Include="Migrations\201510252034017_AddTagsToActivityTemplateDO.Designer.cs">
+      <DependentUpon>201510252034017_AddTagsToActivityTemplateDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510271338091_ActivityTemplate_Add_WebServiceReference_Migration.cs" />
+    <Compile Include="Migrations\201510271338091_ActivityTemplate_Add_WebServiceReference_Migration.Designer.cs">
+      <DependentUpon>201510271338091_ActivityTemplate_Add_WebServiceReference_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510271826316_MERGE_Migration.cs" />
+    <Compile Include="Migrations\201510271826316_MERGE_Migration.Designer.cs">
+      <DependentUpon>201510271826316_MERGE_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510261339053_CreateWebServicesTable_Migration.cs" />
+    <Compile Include="Migrations\201510261339053_CreateWebServicesTable_Migration.Designer.cs">
+      <DependentUpon>201510261339053_CreateWebServicesTable_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511040622414_AddedDocuSignFields.cs" />
+    <Compile Include="Migrations\201511040622414_AddedDocuSignFields.Designer.cs">
+      <DependentUpon>201511040622414_AddedDocuSignFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511062013473_AddActivityTemplateState.cs" />
+    <Compile Include="Migrations\201511062013473_AddActivityTemplateState.Designer.cs">
+      <DependentUpon>201511062013473_AddActivityTemplateState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511101607186_Renamed_Plugin_To_Terminal_Final.cs" />
+    <Compile Include="Migrations\201511101607186_Renamed_Plugin_To_Terminal_Final.Designer.cs">
+      <DependentUpon>201511101607186_Renamed_Plugin_To_Terminal_Final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511130248445_MakeWebServicesOptional.cs" />
+    <Compile Include="Migrations\201511130248445_MakeWebServicesOptional.Designer.cs">
+      <DependentUpon>201511130248445_MakeWebServicesOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511131623530_Container_Id_Int32_To_Guid.cs" />
+    <Compile Include="Migrations\201511131623530_Container_Id_Int32_To_Guid.Designer.cs">
+      <DependentUpon>201511131623530_Container_Id_Int32_To_Guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511160905225_Added_TerminalSubscription_SubscriptionStatus_Edited_Terminal.cs" />
+    <Compile Include="Migrations\201511160905225_Added_TerminalSubscription_SubscriptionStatus_Edited_Terminal.Designer.cs">
+      <DependentUpon>201511160905225_Added_TerminalSubscription_SubscriptionStatus_Edited_Terminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511170753503_RouteDO_Tag.cs" />
+    <Compile Include="Migrations\201511170753503_RouteDO_Tag.Designer.cs">
+      <DependentUpon>201511170753503_RouteDO_Tag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511192035266_Added_Description_ActivityTemplate.cs" />
+    <Compile Include="Migrations\201511192035266_Added_Description_ActivityTemplate.Designer.cs">
+      <DependentUpon>201511192035266_Added_Description_ActivityTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511200612313_RouteNode_Id_Int32_To_Guid.cs" />
+    <Compile Include="Migrations\201511200612313_RouteNode_Id_Int32_To_Guid.Designer.cs">
+      <DependentUpon>201511200612313_RouteNode_Id_Int32_To_Guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511240533318_Standard_Configuration_Controls_To_Standard_UI_Controls.cs" />
+    <Compile Include="Migrations\201511240533318_Standard_Configuration_Controls_To_Standard_UI_Controls.Designer.cs">
+      <DependentUpon>201511240533318_Standard_Configuration_Controls_To_Standard_UI_Controls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511250912363_Add_Description_To_Terminal.cs" />
+    <Compile Include="Migrations\201511250912363_Add_Description_To_Terminal.Designer.cs">
+      <DependentUpon>201511250912363_Add_Description_To_Terminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511271920340_RenameMonitorDocuSignAction.cs" />
+    <Compile Include="Migrations\201511271920340_RenameMonitorDocuSignAction.Designer.cs">
+      <DependentUpon>201511271920340_RenameMonitorDocuSignAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511281709584_Merge2_Migration.cs" />
+    <Compile Include="Migrations\201511281709584_Merge2_Migration.Designer.cs">
+      <DependentUpon>201511281709584_Merge2_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511281946401_Empty.cs" />
+    <Compile Include="Migrations\201511281946401_Empty.Designer.cs">
+      <DependentUpon>201511281946401_Empty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511261934585_RenameCollectFormDataSolution.cs" />
+    <Compile Include="Migrations\201511261934585_RenameCollectFormDataSolution.Designer.cs">
+      <DependentUpon>201511261934585_RenameCollectFormDataSolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512121229183_RenameGoogleSheetsAction.cs" />
+    <Compile Include="Migrations\201512121229183_RenameGoogleSheetsAction.Designer.cs">
+      <DependentUpon>201512121229183_RenameGoogleSheetsAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512141152067_AddedActivityTypeToActivityTemplateDO.cs" />
+    <Compile Include="Migrations\201512141152067_AddedActivityTypeToActivityTemplateDO.Designer.cs">
+      <DependentUpon>201512141152067_AddedActivityTypeToActivityTemplateDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512161607506_SplitAuthorizationTokenDO.cs" />
+    <Compile Include="Migrations\201512161607506_SplitAuthorizationTokenDO.Designer.cs">
+      <DependentUpon>201512161607506_SplitAuthorizationTokenDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512211641017_AddedComponentToHistoryItemDO.cs" />
+    <Compile Include="Migrations\201512211641017_AddedComponentToHistoryItemDO.Designer.cs">
+      <DependentUpon>201512211641017_AddedComponentToHistoryItemDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512251516487_Authorization_V2_Migration.cs" />
+    <Compile Include="Migrations\201512251516487_Authorization_V2_Migration.Designer.cs">
+      <DependentUpon>201512251516487_Authorization_V2_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512311353389_Removed_From_FileDO.cs" />
+    <Compile Include="Migrations\201512311353389_Removed_From_FileDO.Designer.cs">
+      <DependentUpon>201512311353389_Removed_From_FileDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601031440042_Added_Tag_And_FileTags.cs" />
+    <Compile Include="Migrations\201601031440042_Added_Tag_And_FileTags.Designer.cs">
+      <DependentUpon>201601031440042_Added_Tag_And_FileTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601150502349_RouteNodeDO_RootId.cs" />
+    <Compile Include="Migrations\201601150502349_RouteNodeDO_RootId.Designer.cs">
+      <DependentUpon>201601150502349_RouteNodeDO_RootId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601151838550_AddedPublicIdentifierAndSecretoToTerminalDO.cs" />
+    <Compile Include="Migrations\201601151838550_AddedPublicIdentifierAndSecretoToTerminalDO.Designer.cs">
+      <DependentUpon>201601151838550_AddedPublicIdentifierAndSecretoToTerminalDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201708533_Added_Fr8Account_2RouteNode.cs" />
+    <Compile Include="Migrations\201601201708533_Added_Fr8Account_2RouteNode.Designer.cs">
+      <DependentUpon>201601201708533_Added_Fr8Account_2RouteNode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601201734569_Removed_Fr8Account_From_Route.cs" />
+    <Compile Include="Migrations\201601201734569_Removed_Fr8Account_From_Route.Designer.cs">
+      <DependentUpon>201601201734569_Removed_Fr8Account_From_Route.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601211438483_Add_Test_User.cs" />
+    <Compile Include="Migrations\201601240842409_EmptyMigration.cs" />
+    <Compile Include="Migrations\201601240842409_EmptyMigration.Designer.cs">
+      <DependentUpon>201601240842409_EmptyMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601240908090_RenameActionToActivity.cs" />
+    <Compile Include="Migrations\201601240908090_RenameActionToActivity.Designer.cs">
+      <DependentUpon>201601240908090_RenameActionToActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601241443338_RenameRouteToPlan.cs" />
+    <Compile Include="Migrations\201601241443338_RenameRouteToPlan.Designer.cs">
+      <DependentUpon>201601241443338_RenameRouteToPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602051229214_Add_Test_User_2.cs" />
+    <Compile Include="Migrations\201602051229214_Add_Test_User_2.Designer.cs">
+      <DependentUpon>201602051229214_Add_Test_User_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602071156179_RemoveSubscriptionRequiredAndName.cs" />
+    <Compile Include="Migrations\201602071156179_RemoveSubscriptionRequiredAndName.Designer.cs">
+      <DependentUpon>201602071156179_RemoveSubscriptionRequiredAndName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602031204174_MergeMigration.cs" />
+    <Compile Include="Migrations\201602031204174_MergeMigration.Designer.cs">
+      <DependentUpon>201602031204174_MergeMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602121355488_RemovedNullableActivityTemplateIdFromActivityDO.cs" />
+    <Compile Include="Migrations\201602121355488_RemovedNullableActivityTemplateIdFromActivityDO.Designer.cs">
+      <DependentUpon>201602121355488_RemovedNullableActivityTemplateIdFromActivityDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602122245004_Added_Footer_To_EnvelopeDO.cs" />
+    <Compile Include="Migrations\201602122245004_Added_Footer_To_EnvelopeDO.Designer.cs">
+      <DependentUpon>201602122245004_Added_Footer_To_EnvelopeDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602141601318_Activity_AddedClientVisibility.cs" />
+    <Compile Include="Migrations\201602141601318_Activity_AddedClientVisibility.Designer.cs">
+      <DependentUpon>201602141601318_Activity_AddedClientVisibility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602141719533_Activity_ClientVisibilityAllowNULL.cs" />
+    <Compile Include="Migrations\201602141719533_Activity_ClientVisibilityAllowNULL.Designer.cs">
+      <DependentUpon>201602141719533_Activity_ClientVisibilityAllowNULL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602170735431_RemoveMTActivitiesAndRemoveFr8CoreWebServices.cs" />
+    <Compile Include="Migrations\201602170735431_RemoveMTActivitiesAndRemoveFr8CoreWebServices.Designer.cs">
+      <DependentUpon>201602170735431_RemoveMTActivitiesAndRemoveFr8CoreWebServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602191529576_RemoveActivityTemplateDupesAndAddConstaints.cs" />
+    <Compile Include="Migrations\201602191529576_RemoveActivityTemplateDupesAndAddConstaints.Designer.cs">
+      <DependentUpon>201602191529576_RemoveActivityTemplateDupesAndAddConstaints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602241821266_UpdateMtFieldTypes.cs" />
+    <Compile Include="Migrations\201602241821266_UpdateMtFieldTypes.Designer.cs">
+      <DependentUpon>201602241821266_UpdateMtFieldTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602270535022_Plan_Visibility.cs" />
+    <Compile Include="Migrations\201602270535022_Plan_Visibility.Designer.cs">
+      <DependentUpon>201602270535022_Plan_Visibility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602290745114_AddedCateogryColumn_PlanDO.cs" />
+    <Compile Include="Migrations\201602290745114_AddedCateogryColumn_PlanDO.Designer.cs">
+      <DependentUpon>201602290745114_AddedCateogryColumn_PlanDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603021529530_MoveToSqlMt.cs" />
+    <Compile Include="Migrations\201603021529530_MoveToSqlMt.Designer.cs">
+      <DependentUpon>201603021529530_MoveToSqlMt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603041104310_MigrateMTData.cs" />
+    <Compile Include="Migrations\201603041104310_MigrateMTData.Designer.cs">
+      <DependentUpon>201603041104310_MigrateMTData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603051236490_FasterMigrateMTData.cs" />
+    <Compile Include="Migrations\201603051236490_FasterMigrateMTData.Designer.cs">
+      <DependentUpon>201603051236490_FasterMigrateMTData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603152035015_Rename_Save_In_Google_Sheet_Activity.cs" />
+    <Compile Include="Migrations\201603152035015_Rename_Save_In_Google_Sheet_Activity.Designer.cs">
+      <DependentUpon>201603152035015_Rename_Save_In_Google_Sheet_Activity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603170621005_ChangeRouteToPlan.cs" />
+    <Compile Include="Migrations\201603170621005_ChangeRouteToPlan.Designer.cs">
+      <DependentUpon>201603170621005_ChangeRouteToPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603191417514_Renamed_ReceiveGoogleForm_To_MonitorFormResponses.cs" />
+    <Compile Include="Migrations\201603191417514_Renamed_ReceiveGoogleForm_To_MonitorFormResponses.Designer.cs">
+      <DependentUpon>201603191417514_Renamed_ReceiveGoogleForm_To_MonitorFormResponses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603271818114_Organizations_Table_Check.cs" />
+    <Compile Include="Migrations\201603271818114_Organizations_Table_Check.Designer.cs">
+      <DependentUpon>201603271818114_Organizations_Table_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604061440228_RenameContainerFields.cs" />
+    <Compile Include="Migrations\201604061440228_RenameContainerFields.Designer.cs">
+      <DependentUpon>201604061440228_RenameContainerFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603302057295_Table_RolePrivilege.cs" />
+    <Compile Include="Migrations\201603302057295_Table_RolePrivilege.Designer.cs">
+      <DependentUpon>201603302057295_Table_RolePrivilege.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603311051449_Table_ObjectRolePrivileges.cs" />
+    <Compile Include="Migrations\201603311051449_Table_ObjectRolePrivileges.Designer.cs">
+      <DependentUpon>201603311051449_Table_ObjectRolePrivileges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603311220032_OwnerOfObject_Role_Data.cs" />
+    <Compile Include="Migrations\201603311220032_OwnerOfObject_Role_Data.Designer.cs">
+      <DependentUpon>201603311220032_OwnerOfObject_Role_Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112326145_Empty_Fix_Migration.cs" />
+    <Compile Include="Migrations\201604112326145_Empty_Fix_Migration.Designer.cs">
+      <DependentUpon>201604112326145_Empty_Fix_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604130047415_ProcessNodesRemoved.cs" />
+    <Compile Include="Migrations\201604130047415_ProcessNodesRemoved.Designer.cs">
+      <DependentUpon>201604130047415_ProcessNodesRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604150901444_ActivityTemplateDO_Id_Int32_To_Guid.cs" />
+    <Compile Include="Migrations\201604150901444_ActivityTemplateDO_Id_Int32_To_Guid.Designer.cs">
+      <DependentUpon>201604150901444_ActivityTemplateDO_Id_Int32_To_Guid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604160406197_PlanNodeDO_Runnable.cs" />
+    <Compile Include="Migrations\201604160406197_PlanNodeDO_Runnable.Designer.cs">
+      <DependentUpon>201604160406197_PlanNodeDO_Runnable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604171806555_HistoryItemDO_CustomerId_to_Fr8UserId.cs" />
+    <Compile Include="Migrations\201604171806555_HistoryItemDO_CustomerId_to_Fr8UserId.Designer.cs">
+      <DependentUpon>201604171806555_HistoryItemDO_CustomerId_to_Fr8UserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604191731406_AddLabelToTerminals.cs" />
+    <Compile Include="Migrations\201604191731406_AddLabelToTerminals.Designer.cs">
+      <DependentUpon>201604191731406_AddLabelToTerminals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604250944024_AddThemeToOrganization.cs" />
+    <Compile Include="Migrations\201604250944024_AddThemeToOrganization.Designer.cs">
+      <DependentUpon>201604250944024_AddThemeToOrganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604272231431_AddExternalDomainIdToAuthorizationToken.cs" />
+    <Compile Include="Migrations\201604272231431_AddExternalDomainIdToAuthorizationToken.Designer.cs">
+      <DependentUpon>201604272231431_AddExternalDomainIdToAuthorizationToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604292019158_Security_Infrastructure.cs" />
+    <Compile Include="Migrations\201604292019158_Security_Infrastructure.Designer.cs">
+      <DependentUpon>201604292019158_Security_Infrastructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605020854120_EncryptedCrateStorageAdded.cs" />
+    <Compile Include="Migrations\201605020854120_EncryptedCrateStorageAdded.Designer.cs">
+      <DependentUpon>201605020854120_EncryptedCrateStorageAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605051106203_AddNameToActivity.cs" />
+    <Compile Include="Migrations\201605051106203_AddNameToActivity.Designer.cs">
+      <DependentUpon>201605051106203_AddNameToActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605061523484_UpdateMTDatabaseWithNewCLRTypes.cs" />
+    <Compile Include="Migrations\201605061523484_UpdateMTDatabaseWithNewCLRTypes.Designer.cs">
+      <DependentUpon>201605061523484_UpdateMTDatabaseWithNewCLRTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605092037130_AddExternalAccountAndDomainNameToAuthToken.cs" />
+    <Compile Include="Migrations\201605092037130_AddExternalAccountAndDomainNameToAuthToken.Designer.cs">
+      <DependentUpon>201605092037130_AddExternalAccountAndDomainNameToAuthToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605091247127_Plan_Templates.cs" />
+    <Compile Include="Migrations\201605091247127_Plan_Templates.Designer.cs">
+      <DependentUpon>201605091247127_Plan_Templates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605102018494_Move_Profile_To_Fr8Account.cs" />
+    <Compile Include="Migrations\201605102018494_Move_Profile_To_Fr8Account.Designer.cs">
+      <DependentUpon>201605102018494_Move_Profile_To_Fr8Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605111857439_ActivityActivationState.cs" />
+    <Compile Include="Migrations\201605111857439_ActivityActivationState.Designer.cs">
+      <DependentUpon>201605111857439_ActivityActivationState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605131245044_AddedClassPropertyToFr8AccountDO.cs" />
+    <Compile Include="Migrations\201605131245044_AddedClassPropertyToFr8AccountDO.Designer.cs">
+      <DependentUpon>201605131245044_AddedClassPropertyToFr8AccountDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605191153007_Removed_CriteriaDO.cs" />
+    <Compile Include="Migrations\201605191153007_Removed_CriteriaDO.Designer.cs">
+      <DependentUpon>201605191153007_Removed_CriteriaDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605202117041_UtilizationMonitoring.cs" />
+    <Compile Include="Migrations\201605202117041_UtilizationMonitoring.Designer.cs">
+      <DependentUpon>201605202117041_UtilizationMonitoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605231150066_AddOrganizationAndAccountToObjectRolePermissions.cs" />
+    <Compile Include="Migrations\201605231150066_AddOrganizationAndAccountToObjectRolePermissions.Designer.cs">
+      <DependentUpon>201605231150066_AddOrganizationAndAccountToObjectRolePermissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606071223281_Delete FindObjects solution.cs" />
+    <Compile Include="Migrations\201606071223281_Delete FindObjects solution.Designer.cs">
+      <DependentUpon>201606071223281_Delete FindObjects solution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606081850360_UpdateMTDatabaseWithNewCLRTypes1.cs" />
+    <Compile Include="Migrations\201606081850360_UpdateMTDatabaseWithNewCLRTypes1.Designer.cs">
+      <DependentUpon>201606081850360_UpdateMTDatabaseWithNewCLRTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606090249437_RemovingUnusedObjects.cs" />
+    <Compile Include="Migrations\201606090249437_RemovingUnusedObjects.Designer.cs">
+      <DependentUpon>201606090249437_RemovingUnusedObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606091512284_FillManifestRegistry.cs" />
+    <Compile Include="Migrations\201606091512284_FillManifestRegistry.Designer.cs">
+      <DependentUpon>201606091512284_FillManifestRegistry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141326120_FR-3514 Make activity classes naming consistent.cs" />
+    <Compile Include="Migrations\201606141326120_FR-3514 Make activity classes naming consistent.Designer.cs">
+      <DependentUpon>201606141326120_FR-3514 Make activity classes naming consistent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606122001330_HistoryDateIndex.cs" />
+    <Compile Include="Migrations\201606122001330_HistoryDateIndex.Designer.cs">
+      <DependentUpon>201606122001330_HistoryDateIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606131241031_PlanTemplate-Permissions.cs" />
+    <Compile Include="Migrations\201606131241031_PlanTemplate-Permissions.Designer.cs">
+      <DependentUpon>201606131241031_PlanTemplate-Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606131429309_RemovedDocuSignAccountId.cs" />
+    <Compile Include="Migrations\201606131429309_RemovedDocuSignAccountId.Designer.cs">
+      <DependentUpon>201606131429309_RemovedDocuSignAccountId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606180953421_AddedTerminalRegistrationDO.cs" />
+    <Compile Include="Migrations\201606180953421_AddedTerminalRegistrationDO.Designer.cs">
+      <DependentUpon>201606180953421_AddedTerminalRegistrationDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181115160_MoveFr8TerminalsTxtToDB.cs" />
+    <Compile Include="Migrations\201606181115160_MoveFr8TerminalsTxtToDB.Designer.cs">
+      <DependentUpon>201606181115160_MoveFr8TerminalsTxtToDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606190931116_Add_terminalStatX_Migration.cs" />
+    <Compile Include="Migrations\201606190931116_Add_terminalStatX_Migration.Designer.cs">
+      <DependentUpon>201606190931116_Add_terminalStatX_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241050298_AddedTerminalFacebook.cs" />
+    <Compile Include="Migrations\201606241050298_AddedTerminalFacebook.Designer.cs">
+      <DependentUpon>201606241050298_AddedTerminalFacebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606271048030_NullableExpiresAtForAuthToken.cs" />
+    <Compile Include="Migrations\201606271048030_NullableExpiresAtForAuthToken.Designer.cs">
+      <DependentUpon>201606271048030_NullableExpiresAtForAuthToken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606300937169_AddPageDefinition.cs" />
+    <Compile Include="Migrations\201606300937169_AddPageDefinition.Designer.cs">
+      <DependentUpon>201606300937169_AddPageDefinition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607041029473_ActivityCategory.cs" />
+    <Compile Include="Migrations\201607041029473_ActivityCategory.Designer.cs">
+      <DependentUpon>201607041029473_ActivityCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607151938218_UpdateActivityTemplateIds.cs" />
+    <Compile Include="Migrations\201607151938218_UpdateActivityTemplateIds.Designer.cs">
+      <DependentUpon>201607151938218_UpdateActivityTemplateIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607170250191_IsFr8OwnTerminal_Property.cs" />
+    <Compile Include="Migrations\201607170250191_IsFr8OwnTerminal_Property.Designer.cs">
+      <DependentUpon>201607170250191_IsFr8OwnTerminal_Property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181342049_AddPlanTemplatesReferenceToPageDefinitions.cs" />
+    <Compile Include="Migrations\201607181342049_AddPlanTemplatesReferenceToPageDefinitions.Designer.cs">
+      <DependentUpon>201607181342049_AddPlanTemplatesReferenceToPageDefinitions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607190941340_RemovedTerminalIdentifierFromTerminalTable.cs" />
+    <Compile Include="Migrations\201607190941340_RemovedTerminalIdentifierFromTerminalTable.Designer.cs">
+      <DependentUpon>201607190941340_RemovedTerminalIdentifierFromTerminalTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261330178_RemovedObsoleteActivityDOProperties.cs" />
+    <Compile Include="Migrations\201607261330178_RemovedObsoleteActivityDOProperties.Designer.cs">
+      <DependentUpon>201607261330178_RemovedObsoleteActivityDOProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607271152557_FixManifestDescriptionTypos.cs" />
+    <Compile Include="Migrations\201607271152557_FixManifestDescriptionTypos.Designer.cs">
+      <DependentUpon>201607271152557_FixManifestDescriptionTypos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607241524205_Terminals_Standard_Permissions.cs" />
+    <Compile Include="Migrations\201607241524205_Terminals_Standard_Permissions.Designer.cs">
+      <DependentUpon>201607241524205_Terminals_Standard_Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607291915038_RemovePlanTemplateEntities.cs" />
+    <Compile Include="Migrations\201607291915038_RemovePlanTemplateEntities.Designer.cs">
+      <DependentUpon>201607291915038_RemovePlanTemplateEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607300016510_RemoveNodeTransitions.cs" />
+    <Compile Include="Migrations\201607300016510_RemoveNodeTransitions.Designer.cs">
+      <DependentUpon>201607300016510_RemoveNodeTransitions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607301037088_PlanDTO_PlanFullDTO_Refactoring.cs" />
+    <Compile Include="Migrations\201607301037088_PlanDTO_PlanFullDTO_Refactoring.Designer.cs">
+      <DependentUpon>201607301037088_PlanDTO_PlanFullDTO_Refactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607310758516_Standard_Permissions_for_Terminals.cs" />
+    <Compile Include="Migrations\201607310758516_Standard_Permissions_for_Terminals.Designer.cs">
+      <DependentUpon>201607310758516_Standard_Permissions_for_Terminals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607311227053_ChangeRoleName_Customer_to_StandardUser.cs" />
+    <Compile Include="Migrations\201607311227053_ChangeRoleName_Customer_to_StandardUser.Designer.cs">
+      <DependentUpon>201607311227053_ChangeRoleName_Customer_to_StandardUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608021530462_RemoveRunnable.cs" />
+    <Compile Include="Migrations\201608021530462_RemoveRunnable.Designer.cs">
+      <DependentUpon>201608021530462_RemoveRunnable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608030857168_RemovedNameAndCurrentViewFromActivityDO.cs" />
+    <Compile Include="Migrations\201608030857168_RemovedNameAndCurrentViewFromActivityDO.Designer.cs">
+      <DependentUpon>201608030857168_RemovedNameAndCurrentViewFromActivityDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608071558594_DiscoveryRefactoring.cs" />
+    <Compile Include="Migrations\201608071558594_DiscoveryRefactoring.Designer.cs">
+      <DependentUpon>201608071558594_DiscoveryRefactoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608090542310_Remove_WebServiceDO_ActivityCategoryEnum.cs" />
+    <Compile Include="Migrations\201608090542310_Remove_WebServiceDO_ActivityCategoryEnum.Designer.cs">
+      <DependentUpon>201608090542310_Remove_WebServiceDO_ActivityCategoryEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608091020235_FixUp_Migration_2.cs" />
+    <Compile Include="Migrations\201608091020235_FixUp_Migration_2.Designer.cs">
+      <DependentUpon>201608091020235_FixUp_Migration_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608091306036_ConvertedTerminalIdToGuid.cs" />
+    <Compile Include="Migrations\201608091306036_ConvertedTerminalIdToGuid.Designer.cs">
+      <DependentUpon>201608091306036_ConvertedTerminalIdToGuid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608091310148_ConvertMtDataIdToGuid.cs" />
+    <Compile Include="Migrations\201608091310148_ConvertMtDataIdToGuid.Designer.cs">
+      <DependentUpon>201608091310148_ConvertMtDataIdToGuid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608091313044_ConvertObjectIdToGuidAndCreateIndexOnOPR.cs" />
+    <Compile Include="Migrations\201608091313044_ConvertObjectIdToGuidAndCreateIndexOnOPR.Designer.cs">
+      <DependentUpon>201608091313044_ConvertObjectIdToGuidAndCreateIndexOnOPR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608092230355_OperationalState1.cs" />
+    <Compile Include="Migrations\201608092230355_OperationalState1.Designer.cs">
+      <DependentUpon>201608092230355_OperationalState1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608102004444_LinkRolePermissionsToStandardUserRole.cs" />
+    <Compile Include="Migrations\201608102004444_LinkRolePermissionsToStandardUserRole.Designer.cs">
+      <DependentUpon>201608102004444_LinkRolePermissionsToStandardUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608121505031_RemoveInactualAdminUsers.cs" />
+    <Compile Include="Migrations\201608121505031_RemoveInactualAdminUsers.Designer.cs">
+      <DependentUpon>201608121505031_RemoveInactualAdminUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608130142161_AddTypeToActivityCategory.cs" />
+    <Compile Include="Migrations\201608130142161_AddTypeToActivityCategory.Designer.cs">
+      <DependentUpon>201608130142161_AddTypeToActivityCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608151440095_DeleteObsoleteManifestFromMT.cs" />
+    <Compile Include="Migrations\201608151440095_DeleteObsoleteManifestFromMT.Designer.cs">
+      <DependentUpon>201608151440095_DeleteObsoleteManifestFromMT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608161608296_AddSystemAccountIdentifier.cs" />
+    <Compile Include="Migrations\201608161608296_AddSystemAccountIdentifier.Designer.cs">
+      <DependentUpon>201608161608296_AddSystemAccountIdentifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608242253538_ListOfApps.cs" />
+    <Compile Include="Migrations\201608242253538_ListOfApps.Designer.cs">
+      <DependentUpon>201608242253538_ListOfApps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\MigrationConfiguration.ProcessTemplateBuilder.cs" />
+    <Compile Include="Migrations\SqlHelper.cs" />
+    <Compile Include="Repositories\ActivityCategory\ActivityCategoryRepository.cs" />
+    <Compile Include="Repositories\ActivityCategory\ActivityCategorySetRepository.cs" />
+    <Compile Include="Repositories\AspNetUserClaimsRepository.cs" />
+    <Compile Include="Repositories\Authorization\AuthorizationTokenRepositoryBase.cs" />
+    <Compile Include="Repositories\Authorization\AuthorizationTokenChangeTracker.cs" />
+    <Compile Include="Repositories\Authorization\AuthorizationTokenRepositoryBase.InterceptingProvider.cs" />
+    <Compile Include="Repositories\Authorization\AuthorizationTokenRepositoryBase.QueryInterceptor.cs" />
+    <Compile Include="Repositories\Authorization\Impl\AuthorizationTokenRepositoryForTests.cs" />
+    <Compile Include="Repositories\Authorization\Impl\AuthorizationTokenRepositoryStub.cs" />
+    <Compile Include="Repositories\Authorization\IAuthorizationTokenRepository.cs" />
+    <Compile Include="Repositories\Authorization\IAuthorizationTokenStorageProvider.cs" />
+    <Compile Include="Repositories\Authorization\Impl\EfAuthorizationTokenStorageProvider.cs" />
+    <Compile Include="Repositories\Authorization\Impl\KeyVaultAuthorizationTokenRepository.cs" />
+    <Compile Include="Repositories\Authorization\Impl\MockedDbAuthorizationTokenStorageProvider.cs" />
+    <Compile Include="Repositories\EnvelopeRepository.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\SqlBased\SqlMtObjectStorage.Queries.cs" />
+    <Compile Include="Repositories\PageDefinitionRepository.cs" />
+    <Compile Include="Repositories\ProfileRepository.cs" />
+    <Compile Include="Repositories\Cache\ICacheExpirationStrategy.cs" />
+    <Compile Include="Repositories\Cache\IExpirationToken.cs" />
+    <Compile Include="Repositories\Encryption\IEncryptionProvider.cs" />
+    <Compile Include="Repositories\Encryption\IEncryptionService.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Compressor\CompressingEncryptionProvider.cs" />
+    <Compile Include="Repositories\Encryption\Impl\EncryptionProviderIds.cs" />
+    <Compile Include="Repositories\Encryption\Impl\EncryptionService.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Bypass\BypassEncryptionProvider.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Rijndael\EncryptionKey.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Rijndael\IEncryptionKeyProvider.cs" />
+    <Compile Include="Repositories\Encryption\Impl\KeyVault\KeyVaultEncryptionKeyProvider.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Rijndael\RijndaelEncryptionProviderV1.cs" />
+    <Compile Include="Repositories\Encryption\Impl\Rijndael\RijndaelEncryptionProviderWithCompressionV1.cs" />
+    <Compile Include="Repositories\FileTagsRepository.cs" />
+    <Compile Include="Interfaces\IMultiTenantObjectRepository.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\AstNode.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\BinaryOpNode.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\LoadConstNode.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\LoadFieldNode.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\MtBinaryOp.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\MtUnaryOp.cs" />
+    <Compile Include="Repositories\MultiTenant\Ast\UnaryOpNode.cs" />
+    <Compile Include="Repositories\MultiTenant\ExpressionToAstConverter.cs" />
+    <Compile Include="Repositories\MultiTenant\IMtObjectConverter.cs" />
+    <Compile Include="Repositories\MultiTenant\IMtObjectsStorage.cs" />
+    <Compile Include="Repositories\MultiTenant\IMtTypeStorage.cs" />
+    <Compile Include="Repositories\MultiTenant\IMtTypeStorageProvider.cs" />
+    <Compile Include="Repositories\MultiTenant\ITypeTransactionLock.cs" />
+    <Compile Include="Repositories\MultiTenant\MtClrTypeMapping.cs" />
+    <Compile Include="Repositories\MultiTenant\MtObject.cs" />
+    <Compile Include="Repositories\MultiTenant\MtObjectConverter.cs" />
+    <Compile Include="Repositories\MultiTenant\MtPropertyInfo.cs" />
+    <Compile Include="Repositories\MultiTenant\MtTypeDefinition.cs" />
+    <Compile Include="Repositories\MultiTenant\MtTypeReference.cs" />
+    <Compile Include="Repositories\MultiTenant\MtTypeStorage.cs" />
+    <Compile Include="Repositories\MultiTenant\MtTypeStorage.TypeTransactionLock.cs" />
+    <Compile Include="Repositories\MultiTenant\MultitenantRepository.cs" />
+    <Compile Include="Repositories\MultiTenant\MultitenantRepository.MtObjectChanage.cs" />
+    <Compile Include="Repositories\MultiTenant\MultitenantRepository.MtObjectChangeType.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\IMtQueryable.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\IMtQueryExecutor.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\MtQueryable.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\MtQueryableExtensions.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\MtQueryAll.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\MtQueryExecutor.cs" />
+    <Compile Include="Expressions\ReplaceParameterVisitor.cs" />
+    <Compile Include="Repositories\MultiTenant\Queryable\MtWhere.cs" />
+    <Compile Include="Interfaces\IPlanRepository.cs" />
+    <Compile Include="Repositories\OrganizationRepository.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\InMemory\DummyConnectionProvider.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\InMemory\InMemoryMtObjectsStorage.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\InMemory\InMemoryMtTypeStorageProvider.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\SqlBased\AstToSqlConverter.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\SqlBased\SqlMtObjectsStorage.cs" />
+    <Compile Include="Repositories\MultiTenant\StorageImpl\SqlBased\SqlMtTypeStorageProvider.cs" />
+    <Compile Include="Repositories\PermissionSetRepository.cs" />
+    <Compile Include="Repositories\Plan\Expiration.cs" />
+    <Compile Include="Repositories\Plan\IPlanCache.cs" />
+    <Compile Include="Repositories\Plan\PlanStorage.cs" />
+    <Compile Include="Repositories\Plan\IPlanStorageProvider.cs" />
+    <Compile Include="Repositories\Plan\LoadedRoute.cs" />
+    <Compile Include="Repositories\Plan\PlanCache.cs" />
+    <Compile Include="Repositories\Plan\PlanRepository.cs" />
+    <Compile Include="Repositories\Plan\PlanStorageProviderMockedDb.cs" />
+    <Compile Include="Repositories\Plan\PlanStorageProviderEf.cs" />
+    <Compile Include="Repositories\Plan\PlanSnapshot.cs" />
+    <Compile Include="Repositories\Plan\PlanTreeHelper.cs" />
+    <Compile Include="Repositories\Plan\Internal\PlanNodeRepository.cs" />
+    <Compile Include="Repositories\FileRepository.cs" />
+    <Compile Include="Repositories\Cache\SlidingExpirationStrategy.cs" />
+    <Compile Include="Repositories\Security\Entities\ObjectRolePermissionsWrapper.cs" />
+    <Compile Include="Entities\ProfileDO.cs" />
+    <Compile Include="Repositories\Security\Entities\RoleDO.cs" />
+    <Compile Include="Repositories\Security\Entities\RolePermission.cs" />
+    <Compile Include="Repositories\Security\ISecurityObjectsStorageProvider.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\InMemorySecurityObjectsStorageProvider.cs" />
+    <Compile Include="Repositories\SqlBased\ISqlConnectionProvider.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\Cache\ISecurityCacheExpirationStrategy.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\Cache\ISecurityObjectsCache.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\Cache\SecurityObjectsCache.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\Cache\SecurityObjectsStorage.cs" />
+    <Compile Include="Repositories\SqlBased\SqlConnectionProvider.cs" />
+    <Compile Include="Repositories\Security\StorageImpl\SqlBased\SqlSecurityObjectsStorageProvider.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Repositories\TerminalRepository.cs" />
+    <Compile Include="Repositories\SubscriptionRepository.cs" />
+    <Compile Include="Repositories\TerminalSubscriptionRepository.cs" />
+    <Compile Include="Repositories\Utilization\MockedUtilizationDataProvider.cs" />
+    <Compile Include="Repositories\Utilization\SqlUtilizationDataProvider.cs" />
+    <Compile Include="States\OperationalState.cs" />
+    <Compile Include="States\ParticipationState.cs" />
+    <Compile Include="States\ActivationState.cs" />
+    <Compile Include="States\ActivityTemplateState.cs" />
+    <Compile Include="States\AuthorizationTokenState.cs" />
+    <Compile Include="States\DefaultProfiles.cs" />
+    <Compile Include="States\CriteriaExecutionType.cs" />
+    <Compile Include="Entities\HistoryItemDO.cs" />
+    <Compile Include="Entities\EnvelopeDO.cs" />
+    <Compile Include="Entities\TerminalDO.cs" />
+    <Compile Include="Entities\ContainerDO.cs" />
+    <Compile Include="Entities\PlanDO.cs" />
+    <Compile Include="Entities\SlipDO.cs" />
+    <Compile Include="Entities\SubscriptionDO.cs" />
+    <Compile Include="Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="Infrastructure\EntityExtensions.cs" />
+    <Compile Include="Interfaces\IBaseDO.cs" />
+    <Compile Include="Entities\ExpectedResponseDO.cs" />
+    <Compile Include="Entities\InvitationDO.cs" />
+    <Compile Include="Entities\LogDO.cs" />
+    <Compile Include="Infrastructure\StructureMap\ISecurityServices.cs" />
+    <Compile Include="Infrastructure\StructureMap\MockedSecurityServices.cs" />
+    <Compile Include="Interfaces\IBookingRequestDO.cs" />
+    <Compile Include="Interfaces\IEmailDO.cs" />
+    <Compile Include="Interfaces\IHistoryItemDO.cs" />
+    <Compile Include="Interfaces\IMailerDO.cs" />
+    <Compile Include="Interfaces\ITerminalDO.cs" />
+    <Compile Include="Interfaces\ISubscriptionDO.cs" />
+    <Compile Include="Migrations\DbMigration.cs" />
+    <Compile Include="Infrastructure\StructureMap\MigrationConsoleSeedRegistry.cs" />
+    <Compile Include="Repositories\ActivityTemplateRepository.cs" />
+    <Compile Include="Repositories\Plan\Internal\ActivityRepository.cs" />
+    <Compile Include="Repositories\EmailStatusRepository.cs" />
+    <Compile Include="Repositories\Plan\Internal\SubPlanRepository.cs" />
+    <Compile Include="Repositories\Plan\Internal\PlansRepository.cs" />
+    <Compile Include="Repositories\HistoryRepository.cs" />
+    <Compile Include="Repositories\ContainerRepository.cs" />
+    <Compile Include="Repositories\MetaflowRepository.cs" />
+    <Compile Include="Repositories\ExpectedResponseRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
+    <Compile Include="Repositories\Authorization\Impl\SqlAuthorizationTokenRepository.cs" />
+    <Compile Include="Repositories\InvitationRepository.cs" />
+    <Compile Include="Repositories\UserStatusRepository.cs" />
+    <Compile Include="States\AccessLevel.cs" />
+    <Compile Include="States\PermissionType.cs" />
+    <Compile Include="States\SubscriptionState.cs" />
+    <Compile Include="States\Templates\_OperationalStateTemplate.cs" />
+    <Compile Include="States\Templates\_ParticipationStateTemplate.cs" />
+    <Compile Include="States\Templates\_PermissionTypeTemplate.cs" />
+    <Compile Include="States\Templates\_SubscriptionStateTemplate.cs" />
+    <Compile Include="States\ContainerState.cs" />
+    <Compile Include="States\BookingRequestAvailability.cs" />
+    <Compile Include="States\BookingRequestState.cs" />
+    <Compile Include="States\CommunicationMode.cs" />
+    <Compile Include="States\ConfirmationStatus.cs" />
+    <Compile Include="States\EventCreateType.cs" />
+    <Compile Include="States\EventSyncState.cs" />
+    <Compile Include="States\ExpectedResponseStatus.cs" />
+    <Compile Include="States\InvitationType.cs" />
+    <Compile Include="States\ParticipationStatus.cs" />
+    <Compile Include="States\PlanState.cs" />
+    <Compile Include="States\Roles.cs" />
+    <Compile Include="States\Templates\_AccessLevelTemplate.cs" />
+    <Compile Include="States\Templates\_AuthenticationTypeTemplate.cs" />
+    <Compile Include="States\Templates\_ActivityTemplateStateTemplate.cs" />
+    <Compile Include="States\Templates\_AuthorizationTokenStateTemplate.cs" />
+    <Compile Include="States\Templates\_TerminalStatusTemplate.cs" />
+    <Compile Include="Entities\SubPlanDO.cs" />
+    <Compile Include="States\Templates\_ContainerStateTemplate.cs" />
+    <Compile Include="States\Templates\IStateTemplate.cs" />
+    <Compile Include="States\InstructionConstants.cs" />
+    <Compile Include="Entities\AspNetRolesDO.cs" />
+    <Compile Include="Entities\AspNetUserRolesDO.cs" />
+    <Compile Include="Entities\ConceptDO.cs" />
+    <Compile Include="States\Templates\_CommunicationTypeTemplate.cs" />
+    <Compile Include="States\Templates\_ConfirmationStatusTemplate.cs" />
+    <Compile Include="States\Templates\_EmailParticipantTypeTemplate.cs" />
+    <Compile Include="States\Templates\_EmailStatusTemplate.cs" />
+    <Compile Include="States\Templates\_ExpectedResponseStatusTemplate.cs" />
+    <Compile Include="States\Templates\_InvitationTypeTemplate.cs" />
+    <Compile Include="States\Templates\_RouteStateTemplate.cs" />
+    <Compile Include="States\Templates\_TrackingStatusTemplate.cs" />
+    <Compile Include="States\Templates\_TrackingTypeTemplate.cs" />
+    <Compile Include="States\AnswerState.cs" />
+    <Compile Include="States\NegotiationState.cs" />
+    <Compile Include="Entities\IncidentDO.cs" />
+    <Compile Include="Entities\CommunicationConfigurationDO.cs" />
+    <Compile Include="Entities\FactDO.cs" />
+    <Compile Include="States\QuestionState.cs" />
+    <Compile Include="Entities\RecipientDO.cs" />
+    <Compile Include="States\CommunicationType.cs" />
+    <Compile Include="States\EmailParticipantType.cs" />
+    <Compile Include="States\EmailState.cs" />
+    <Compile Include="States\Templates\_UserStateTemplate.cs" />
+    <Compile Include="States\TrackingState.cs" />
+    <Compile Include="States\TrackingType.cs" />
+    <Compile Include="Infrastructure\JoinTables\EventEmailDO.cs" />
+    <Compile Include="Entities\GenericCustomField.cs" />
+    <Compile Include="Entities\UserAgentInfoDO.cs" />
+    <Compile Include="Infrastructure\EventManager.cs" />
+    <Compile Include="Infrastructure\StructureMap\MockedDBContext.cs" />
+    <Compile Include="Infrastructure\StructureMap\MockedDbSet.cs" />
+    <Compile Include="Infrastructure\StructureMap\DatabaseStructureMapBootStrapper.cs" />
+    <Compile Include="Interfaces\IAspNetRolesDO.cs" />
+    <Compile Include="Interfaces\IAspNetUserRolesDO.cs" />
+    <Compile Include="Interfaces\ICustomField.cs" />
+    <Compile Include="Entities\TrackingStatusDO.cs" />
+    <Compile Include="Infrastructure\FileManager.cs" />
+    <Compile Include="Infrastructure\DockyardDbContext.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Interfaces\IDBContext.cs" />
+    <Compile Include="Interfaces\IEnvelopeDO.cs" />
+    <Compile Include="Interfaces\IPerson.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\ISaveHook.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Migrations\MigrationConfiguration.cs" />
+    <Compile Include="Repositories\AspNetRolesRepository.cs" />
+    <Compile Include="Repositories\AspNetUserRolesRepository.cs" />
+    <Compile Include="Repositories\AttachmentRepository.cs" />
+    <Compile Include="Repositories\IncidentRepository.cs" />
+    <Compile Include="Repositories\FactRepository.cs" />
+    <Compile Include="Repositories\EmailEmailAddressRepository.cs" />
+    <Compile Include="Repositories\CommunicationRepository.cs" />
+    <Compile Include="Repositories\EmailAddressRepository.cs" />
+    <Compile Include="Repositories\EmailRepository.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
+    <Compile Include="Repositories\InstructionRepository.cs" />
+    <Compile Include="Repositories\StoredFileRepository.cs" />
+    <Compile Include="Interfaces\IEmailAddressDO.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Entities\AttachmentDO.cs" />
+    <Compile Include="Entities\EmailDO.cs" />
+    <Compile Include="Entities\EmailAddressDO.cs" />
+    <Compile Include="Interfaces\IAttachmentDO.cs" />
+    <Compile Include="Interfaces\IFr8AccountDO.cs" />
+    <Compile Include="Entities\InstructionDO.cs" />
+    <Compile Include="Entities\StoredFileDO.cs" />
+    <Compile Include="Entities\Fr8AccountDO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\TrackingStatusRepository.cs" />
+    <Compile Include="Repositories\UserAgentInfoRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="States\UserState.cs" />
+    <Compile Include="Utility\JoinClasses\FileTags.cs" />
+    <Compile Include="Utility\CopyPropertiesHelper.cs" />
+    <Compile Include="Utility\PagingExtensions.cs" />
+    <Compile Include="Utility\TagDO.cs" />
+    <Compile Include="Validations\ActionValidator.cs" />
+    <Compile Include="Validations\ContainerValidator.cs" />
+    <Compile Include="Validations\IncidentValidator.cs" />
+    <Compile Include="Validations\OutboundEmailValidatorBase.cs" />
+    <Compile Include="Validations\OutboundHtmlEmailValidator.cs" />
+    <Compile Include="Validations\OutboundTemplatedEmailValidator.cs" />
+    <Compile Include="Validations\TerminalValidator.cs" />
+    <Compile Include="Validations\UserValidator.cs" />
+    <Compile Include="Validations\ValidationUtils.cs" />
+    <Compile Include="Validations\Validators.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="LICENSE" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+    <Folder Include="Entities\Enumerations\" />
+    <Folder Include="Infrastructure\MultiTenant\" />
+    <Folder Include="Wrappers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510120408332_InitialMigration.resx">
+      <DependentUpon>201510120408332_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510130637359_UpdateDocuSignEventDo.resx">
+      <DependentUpon>201510130637359_UpdateDocuSignEventDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510141403432_Change ProcessTemplate to Route.resx">
+      <DependentUpon>201510141403432_Change ProcessTemplate to Route.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510141530275_Rename ProcessNodeTemplate to Subroute.resx">
+      <DependentUpon>201510141530275_Rename ProcessNodeTemplate to Subroute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510141822442_RemoveActionState.resx">
+      <DependentUpon>201510141822442_RemoveActionState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510150439139_Rename_Process_To_Container_Migration.resx">
+      <DependentUpon>201510150439139_Rename_Process_To_Container_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510150528051_FixUp_Migration.resx">
+      <DependentUpon>201510150528051_FixUp_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510150812534_Rename_DockyardAccount_To_Fr8Account_Migration.resx">
+      <DependentUpon>201510150812534_Rename_DockyardAccount_To_Fr8Account_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510151001212_Rename_Activity_To_RouteNode_Migration.resx">
+      <DependentUpon>201510151001212_Rename_Activity_To_RouteNode_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510152143047_Add_Label_Property_To_ActionTemplate.resx">
+      <DependentUpon>201510152143047_Add_Label_Property_To_ActionTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510181719065_IngnoreChangesUpdate.resx">
+      <DependentUpon>201510181719065_IngnoreChangesUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510181426528_RemoveFrAccountIdFromContainerDO.resx">
+      <DependentUpon>201510181426528_RemoveFrAccountIdFromContainerDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510200747079_UpdateMTTables.resx">
+      <DependentUpon>201510200747079_UpdateMTTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510201228599_ModifiedAuthorizeTokenTable.resx">
+      <DependentUpon>201510201228599_ModifiedAuthorizeTokenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510202031291_NothingIgnoreChanages.resx">
+      <DependentUpon>201510202031291_NothingIgnoreChanages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510212105295_AddMinPaneWidth.resx">
+      <DependentUpon>201510212105295_AddMinPaneWidth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510221210362_ActivityTemplate_AuthType_Migration.resx">
+      <DependentUpon>201510221210362_ActivityTemplate_AuthType_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510230242497_FixUp_2_Migration.resx">
+      <DependentUpon>201510230242497_FixUp_2_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510252034017_AddTagsToActivityTemplateDO.resx">
+      <DependentUpon>201510252034017_AddTagsToActivityTemplateDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510271338091_ActivityTemplate_Add_WebServiceReference_Migration.resx">
+      <DependentUpon>201510271338091_ActivityTemplate_Add_WebServiceReference_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510271826316_MERGE_Migration.resx">
+      <DependentUpon>201510271826316_MERGE_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510261339053_CreateWebServicesTable_Migration.resx">
+      <DependentUpon>201510261339053_CreateWebServicesTable_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511040622414_AddedDocuSignFields.resx">
+      <DependentUpon>201511040622414_AddedDocuSignFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511062013473_AddActivityTemplateState.resx">
+      <DependentUpon>201511062013473_AddActivityTemplateState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101607186_Renamed_Plugin_To_Terminal_Final.resx">
+      <DependentUpon>201511101607186_Renamed_Plugin_To_Terminal_Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511130248445_MakeWebServicesOptional.resx">
+      <DependentUpon>201511130248445_MakeWebServicesOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511131623530_Container_Id_Int32_To_Guid.resx">
+      <DependentUpon>201511131623530_Container_Id_Int32_To_Guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511160905225_Added_TerminalSubscription_SubscriptionStatus_Edited_Terminal.resx">
+      <DependentUpon>201511160905225_Added_TerminalSubscription_SubscriptionStatus_Edited_Terminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511170753503_RouteDO_Tag.resx">
+      <DependentUpon>201511170753503_RouteDO_Tag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511192035266_Added_Description_ActivityTemplate.resx">
+      <DependentUpon>201511192035266_Added_Description_ActivityTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511200612313_RouteNode_Id_Int32_To_Guid.resx">
+      <DependentUpon>201511200612313_RouteNode_Id_Int32_To_Guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511240533318_Standard_Configuration_Controls_To_Standard_UI_Controls.resx">
+      <DependentUpon>201511240533318_Standard_Configuration_Controls_To_Standard_UI_Controls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511250912363_Add_Description_To_Terminal.resx">
+      <DependentUpon>201511250912363_Add_Description_To_Terminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511271920340_RenameMonitorDocuSignAction.resx">
+      <DependentUpon>201511271920340_RenameMonitorDocuSignAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511281709584_Merge2_Migration.resx">
+      <DependentUpon>201511281709584_Merge2_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511281946401_Empty.resx">
+      <DependentUpon>201511281946401_Empty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511261934585_RenameCollectFormDataSolution.resx">
+      <DependentUpon>201511261934585_RenameCollectFormDataSolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512121229183_RenameGoogleSheetsAction.resx">
+      <DependentUpon>201512121229183_RenameGoogleSheetsAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141152067_AddedActivityTypeToActivityTemplateDO.resx">
+      <DependentUpon>201512141152067_AddedActivityTypeToActivityTemplateDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512161607506_SplitAuthorizationTokenDO.resx">
+      <DependentUpon>201512161607506_SplitAuthorizationTokenDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512211641017_AddedComponentToHistoryItemDO.resx">
+      <DependentUpon>201512211641017_AddedComponentToHistoryItemDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512251516487_Authorization_V2_Migration.resx">
+      <DependentUpon>201512251516487_Authorization_V2_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512311353389_Removed_From_FileDO.resx">
+      <DependentUpon>201512311353389_Removed_From_FileDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601031440042_Added_Tag_And_FileTags.resx">
+      <DependentUpon>201601031440042_Added_Tag_And_FileTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601150502349_RouteNodeDO_RootId.resx">
+      <DependentUpon>201601150502349_RouteNodeDO_RootId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601151838550_AddedPublicIdentifierAndSecretoToTerminalDO.resx">
+      <DependentUpon>201601151838550_AddedPublicIdentifierAndSecretoToTerminalDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601211438483_Add_Test_User.resx">
+      <DependentUpon>201601211438483_Add_Test_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201708533_Added_Fr8Account_2RouteNode.resx">
+      <DependentUpon>201601201708533_Added_Fr8Account_2RouteNode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601201734569_Removed_Fr8Account_From_Route.resx">
+      <DependentUpon>201601201734569_Removed_Fr8Account_From_Route.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601240842409_EmptyMigration.resx">
+      <DependentUpon>201601240842409_EmptyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601240908090_RenameActionToActivity.resx">
+      <DependentUpon>201601240908090_RenameActionToActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601241443338_RenameRouteToPlan.resx">
+      <DependentUpon>201601241443338_RenameRouteToPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602031204174_MergeMigration.resx">
+      <DependentUpon>201602031204174_MergeMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602051229214_Add_Test_User_2.resx">
+      <DependentUpon>201602051229214_Add_Test_User_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602071156179_RemoveSubscriptionRequiredAndName.resx">
+      <DependentUpon>201602071156179_RemoveSubscriptionRequiredAndName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602121355488_RemovedNullableActivityTemplateIdFromActivityDO.resx">
+      <DependentUpon>201602121355488_RemovedNullableActivityTemplateIdFromActivityDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602122245004_Added_Footer_To_EnvelopeDO.resx">
+      <DependentUpon>201602122245004_Added_Footer_To_EnvelopeDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602141601318_Activity_AddedClientVisibility.resx">
+      <DependentUpon>201602141601318_Activity_AddedClientVisibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602141719533_Activity_ClientVisibilityAllowNULL.resx">
+      <DependentUpon>201602141719533_Activity_ClientVisibilityAllowNULL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602170735431_RemoveMTActivitiesAndRemoveFr8CoreWebServices.resx">
+      <DependentUpon>201602170735431_RemoveMTActivitiesAndRemoveFr8CoreWebServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602191529576_RemoveActivityTemplateDupesAndAddConstaints.resx">
+      <DependentUpon>201602191529576_RemoveActivityTemplateDupesAndAddConstaints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602241821266_UpdateMtFieldTypes.resx">
+      <DependentUpon>201602241821266_UpdateMtFieldTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602270535022_Plan_Visibility.resx">
+      <DependentUpon>201602270535022_Plan_Visibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602290745114_AddedCateogryColumn_PlanDO.resx">
+      <DependentUpon>201602290745114_AddedCateogryColumn_PlanDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603021529530_MoveToSqlMt.resx">
+      <DependentUpon>201603021529530_MoveToSqlMt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603041104310_MigrateMTData.resx">
+      <DependentUpon>201603041104310_MigrateMTData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603051236490_FasterMigrateMTData.resx">
+      <DependentUpon>201603051236490_FasterMigrateMTData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603152035015_Rename_Save_In_Google_Sheet_Activity.resx">
+      <DependentUpon>201603152035015_Rename_Save_In_Google_Sheet_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603170621005_ChangeRouteToPlan.resx">
+      <DependentUpon>201603170621005_ChangeRouteToPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603191417514_Renamed_ReceiveGoogleForm_To_MonitorFormResponses.resx">
+      <DependentUpon>201603191417514_Renamed_ReceiveGoogleForm_To_MonitorFormResponses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603271818114_Organizations_Table_Check.resx">
+      <DependentUpon>201603271818114_Organizations_Table_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604061440228_RenameContainerFields.resx">
+      <DependentUpon>201604061440228_RenameContainerFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603302057295_Table_RolePrivilege.resx">
+      <DependentUpon>201603302057295_Table_RolePrivilege.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603311051449_Table_ObjectRolePrivileges.resx">
+      <DependentUpon>201603311051449_Table_ObjectRolePrivileges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603311220032_OwnerOfObject_Role_Data.resx">
+      <DependentUpon>201603311220032_OwnerOfObject_Role_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112326145_Empty_Fix_Migration.resx">
+      <DependentUpon>201604112326145_Empty_Fix_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604130047415_ProcessNodesRemoved.resx">
+      <DependentUpon>201604130047415_ProcessNodesRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604150901444_ActivityTemplateDO_Id_Int32_To_Guid.resx">
+      <DependentUpon>201604150901444_ActivityTemplateDO_Id_Int32_To_Guid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604160406197_PlanNodeDO_Runnable.resx">
+      <DependentUpon>201604160406197_PlanNodeDO_Runnable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604171806555_HistoryItemDO_CustomerId_to_Fr8UserId.resx">
+      <DependentUpon>201604171806555_HistoryItemDO_CustomerId_to_Fr8UserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604191731406_AddLabelToTerminals.resx">
+      <DependentUpon>201604191731406_AddLabelToTerminals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604250944024_AddThemeToOrganization.resx">
+      <DependentUpon>201604250944024_AddThemeToOrganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604272231431_AddExternalDomainIdToAuthorizationToken.resx">
+      <DependentUpon>201604272231431_AddExternalDomainIdToAuthorizationToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604292019158_Security_Infrastructure.resx">
+      <DependentUpon>201604292019158_Security_Infrastructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605020854120_EncryptedCrateStorageAdded.resx">
+      <DependentUpon>201605020854120_EncryptedCrateStorageAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605051106203_AddNameToActivity.resx">
+      <DependentUpon>201605051106203_AddNameToActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605061523484_UpdateMTDatabaseWithNewCLRTypes.resx">
+      <DependentUpon>201605061523484_UpdateMTDatabaseWithNewCLRTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605092037130_AddExternalAccountAndDomainNameToAuthToken.resx">
+      <DependentUpon>201605092037130_AddExternalAccountAndDomainNameToAuthToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605091247127_Plan_Templates.resx">
+      <DependentUpon>201605091247127_Plan_Templates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605102018494_Move_Profile_To_Fr8Account.resx">
+      <DependentUpon>201605102018494_Move_Profile_To_Fr8Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111857439_ActivityActivationState.resx">
+      <DependentUpon>201605111857439_ActivityActivationState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605131245044_AddedClassPropertyToFr8AccountDO.resx">
+      <DependentUpon>201605131245044_AddedClassPropertyToFr8AccountDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605191153007_Removed_CriteriaDO.resx">
+      <DependentUpon>201605191153007_Removed_CriteriaDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605202117041_UtilizationMonitoring.resx">
+      <DependentUpon>201605202117041_UtilizationMonitoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605231150066_AddOrganizationAndAccountToObjectRolePermissions.resx">
+      <DependentUpon>201605231150066_AddOrganizationAndAccountToObjectRolePermissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606071223281_Delete FindObjects solution.resx">
+      <DependentUpon>201606071223281_Delete FindObjects solution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606081850360_UpdateMTDatabaseWithNewCLRTypes1.resx">
+      <DependentUpon>201606081850360_UpdateMTDatabaseWithNewCLRTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606090249437_RemovingUnusedObjects.resx">
+      <DependentUpon>201606090249437_RemovingUnusedObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606091512284_FillManifestRegistry.resx">
+      <DependentUpon>201606091512284_FillManifestRegistry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141326120_FR-3514 Make activity classes naming consistent.resx">
+      <DependentUpon>201606141326120_FR-3514 Make activity classes naming consistent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606122001330_HistoryDateIndex.resx">
+      <DependentUpon>201606122001330_HistoryDateIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606131241031_PlanTemplate-Permissions.resx">
+      <DependentUpon>201606131241031_PlanTemplate-Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606131429309_RemovedDocuSignAccountId.resx">
+      <DependentUpon>201606131429309_RemovedDocuSignAccountId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606180953421_AddedTerminalRegistrationDO.resx">
+      <DependentUpon>201606180953421_AddedTerminalRegistrationDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181115160_MoveFr8TerminalsTxtToDB.resx">
+      <DependentUpon>201606181115160_MoveFr8TerminalsTxtToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606190931116_Add_terminalStatX_Migration.resx">
+      <DependentUpon>201606190931116_Add_terminalStatX_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241050298_AddedTerminalFacebook.resx">
+      <DependentUpon>201606241050298_AddedTerminalFacebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606271048030_NullableExpiresAtForAuthToken.resx">
+      <DependentUpon>201606271048030_NullableExpiresAtForAuthToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606300937169_AddPageDefinition.resx">
+      <DependentUpon>201606300937169_AddPageDefinition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607041029473_ActivityCategory.resx">
+      <DependentUpon>201607041029473_ActivityCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607151938218_UpdateActivityTemplateIds.resx">
+      <DependentUpon>201607151938218_UpdateActivityTemplateIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607170250191_IsFr8OwnTerminal_Property.resx">
+      <DependentUpon>201607170250191_IsFr8OwnTerminal_Property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181342049_AddPlanTemplatesReferenceToPageDefinitions.resx">
+      <DependentUpon>201607181342049_AddPlanTemplatesReferenceToPageDefinitions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607190941340_RemovedTerminalIdentifierFromTerminalTable.resx">
+      <DependentUpon>201607190941340_RemovedTerminalIdentifierFromTerminalTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261330178_RemovedObsoleteActivityDOProperties.resx">
+      <DependentUpon>201607261330178_RemovedObsoleteActivityDOProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607271152557_FixManifestDescriptionTypos.resx">
+      <DependentUpon>201607271152557_FixManifestDescriptionTypos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607241524205_Terminals_Standard_Permissions.resx">
+      <DependentUpon>201607241524205_Terminals_Standard_Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607291915038_RemovePlanTemplateEntities.resx">
+      <DependentUpon>201607291915038_RemovePlanTemplateEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607300016510_RemoveNodeTransitions.resx">
+      <DependentUpon>201607300016510_RemoveNodeTransitions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607301037088_PlanDTO_PlanFullDTO_Refactoring.resx">
+      <DependentUpon>201607301037088_PlanDTO_PlanFullDTO_Refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607310758516_Standard_Permissions_for_Terminals.resx">
+      <DependentUpon>201607310758516_Standard_Permissions_for_Terminals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607311227053_ChangeRoleName_Customer_to_StandardUser.resx">
+      <DependentUpon>201607311227053_ChangeRoleName_Customer_to_StandardUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608021530462_RemoveRunnable.resx">
+      <DependentUpon>201608021530462_RemoveRunnable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608030857168_RemovedNameAndCurrentViewFromActivityDO.resx">
+      <DependentUpon>201608030857168_RemovedNameAndCurrentViewFromActivityDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608071558594_DiscoveryRefactoring.resx">
+      <DependentUpon>201608071558594_DiscoveryRefactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608090542310_Remove_WebServiceDO_ActivityCategoryEnum.resx">
+      <DependentUpon>201608090542310_Remove_WebServiceDO_ActivityCategoryEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091020235_FixUp_Migration_2.resx">
+      <DependentUpon>201608091020235_FixUp_Migration_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091306036_ConvertedTerminalIdToGuid.resx">
+      <DependentUpon>201608091306036_ConvertedTerminalIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091310148_ConvertMtDataIdToGuid.resx">
+      <DependentUpon>201608091310148_ConvertMtDataIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608091313044_ConvertObjectIdToGuidAndCreateIndexOnOPR.resx">
+      <DependentUpon>201608091313044_ConvertObjectIdToGuidAndCreateIndexOnOPR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608092230355_OperationalState1.resx">
+      <DependentUpon>201608092230355_OperationalState1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608102004444_LinkRolePermissionsToStandardUserRole.resx">
+      <DependentUpon>201608102004444_LinkRolePermissionsToStandardUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608121505031_RemoveInactualAdminUsers.resx">
+      <DependentUpon>201608121505031_RemoveInactualAdminUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608130142161_AddTypeToActivityCategory.resx">
+      <DependentUpon>201608130142161_AddTypeToActivityCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608151440095_DeleteObsoleteManifestFromMT.resx">
+      <DependentUpon>201608151440095_DeleteObsoleteManifestFromMT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608161608296_AddSystemAccountIdentifier.resx">
+      <DependentUpon>201608161608296_AddSystemAccountIdentifier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608242253538_ListOfApps.resx">
+      <DependentUpon>201608242253538_ListOfApps.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fr8Infrastructure.NET\Fr8Infrastructure.NET.csproj">
+      <Project>{bba91af2-7636-41b6-87c4-c1575ae8b04b}</Project>
+      <Name>Fr8Infrastructure.NET</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

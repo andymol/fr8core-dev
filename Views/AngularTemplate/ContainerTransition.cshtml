@@ -1,0 +1,34 @@
+﻿<div>
+    <div ng-repeat="transition in field.transitions track by $index">
+        <p>
+            <span>If the following is true:</span>
+            <span class="delete-btn pull-right" ng-if="field.transitions.length > 1"
+                ng-click="removeTransition($index)">
+                <i class="fa fa-times fa-2x"></i>
+            </span>
+        </p>
+        <query-builder current-action="currentAction"
+                       rows="transition.conditions"
+                       request-upstream="field.source.requestUpstream"
+                       is-disabled="false"
+                       add-row-text="Add Condition"
+                       field="field">
+        </query-builder>
+
+        <div>
+            <label class="control-label">Then do the following:</label>
+            <drop-down-list-box current-action="currentAction" field="::(getOperationField(transition))" change="onOperationChange(transition)"></drop-down-list-box>
+        </div>
+
+        <div ng-if="transition._dummySecondaryOperationDD" class="query-builder-add-button">
+            <label class="control-label">{{transition._dummySecondaryOperationDD.label}}</label>
+            <drop-down-list-box is-disabled="isDisabled" current-action="currentAction" field="transition._dummySecondaryOperationDD" change="onTargetChange(transition)"></drop-down-list-box>
+        </div>
+        <div data-ng-if="transition.errorMessage != null && transition.errorMessage !==''" class="validationWraper">
+            <span class="validation-Icon"></span><div class="validation-message">{{transition.errorMessage}}</div>
+        </div>
+        <hr class="transition-seperator"/>
+    </div>
+
+    <button class="btn btn-primary query-builder-add-button" ng-click="addTransition()" stop-click-propagation>Add Transition</button>
+</div>

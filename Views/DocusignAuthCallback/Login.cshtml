@@ -1,0 +1,32 @@
+﻿@model HubWeb.ViewModels.DocusignLoginVM
+
+@{
+    ViewBag.Title = "Docusign Login Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.ValidationSummary(excludePropertyErrors: true);
+    <div>
+        <fieldset>
+            <legend>Docusign Login</legend>
+            <div>
+                @Html.LabelFor(m => m.Username)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Username)
+                @Html.ValidationMessageFor(m => m.Username)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </fieldset>
+
+        <input type="submit" value="Log In"/>
+    </div>
+}

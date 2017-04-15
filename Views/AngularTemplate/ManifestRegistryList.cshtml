@@ -1,0 +1,50 @@
+﻿<div ng-controller="ManifestRegistryListController">
+    <div class="row" style="margin-bottom: 24px;">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet light ">
+
+                <div class="portlet-title">
+                    <div class="caption caption-md">
+                        <i class="icon-bar-chart font-green-haze hide"></i>
+                        <span class="caption-subject font-green-haze bold uppercase">Manifest Registry</span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn green" ng-click="goToManifestSubmissionForm()">Add Manifest Description</a>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div>
+                        <span class="text-block">
+                            These are defined Manifests that are shared by Fr8 Activities. You can submit additional Manifests to this registry. Use of these is optional, but when you save your activity's crate data in a json format specified by a defined Manifest, you increase the ability of other downstream activities to work with the data structures you've created.
+                        </span>
+                    </div>
+                    <div ng-show="manifestRegistry.length == 0" class="ng-hide">No manifest descriptions found.</div>
+                    <div ng-show="manifestRegistry.length > 0">
+                        <table datatable="ng" class="row-border hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Version</th>
+                                    <th>Description</th>
+                                    <th>RegisteredBy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="manifestDescription in manifestRegistry" ng-click="goToManifestDescriptionPage(manifestDescription.name)" class="cursor-pointer">
+                                    <td>{{manifestDescription.id}}</td>
+                                    <td>{{manifestDescription.name}}</td>
+                                    <td>{{manifestDescription.version}}</td>
+                                    <td class="manifest-registry-description">{{manifestDescription.description}}</td>
+                                    <td>{{manifestDescription.registeredBy}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
